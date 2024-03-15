@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/alex-productions-epic-cinematic-gaming-cyberpunk-reset(chosic.com).mp3-df89d7b0efb9a7c287e79f97a0350994.mp3str"
+
+[deps]
+
+source_file="res://assets/alex-productions-epic-cinematic-gaming-cyberpunk-reset(chosic.com).mp3"
+dest_files=[ "res://.import/alex-productions-epic-cinematic-gaming-cyberpunk-reset(chosic.com).mp3-df89d7b0efb9a7c287e79f97a0350994.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

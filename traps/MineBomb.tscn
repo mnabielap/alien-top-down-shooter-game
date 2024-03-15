@@ -1,0 +1,49 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://traps/MineBomb.gd" type="Script" id=1]
+[ext_resource path="res://assets/Green Portal Sprite Sheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_10.png" type="Texture" id=3]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_09.png" type="Texture" id=4]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_07.png" type="Texture" id=5]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_08.png" type="Texture" id=6]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_04.png" type="Texture" id=7]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_05.png" type="Texture" id=8]
+[ext_resource path="res://assets/Player/Death/Astro_Astrounaut Death_06.png" type="Texture" id=9]
+[ext_resource path="res://overlap/Hitbox.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 459, 144, 51, 48 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "explode",
+"speed": 30.0
+} ]
+
+[node name="MineBomb" instance=ExtResource( 10 )]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource( 1 )
+knockback_modifier = 0.1
+is_knockback = true
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource( 1 )
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+frames = SubResource( 2 )
+animation = "explode"
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
